@@ -13,7 +13,7 @@ keywords:
   - m6 imac
   - m6 chip vs m5
   - m6 macbook pro specs
-draft: true
+draft: false
 ---
 
 Apple's M6 MacBook Pro and M6 iMac are here. The 14-inch MacBook Pro starts at $1,999 and the 24-inch iMac at $1,499. Apple announced both on October 27, 2026. Pre-orders opened October 28, and both arrive November 6. Against last year's M5, it's a normal yearly step. Against a Mac that's several years old, it's a big jump.
@@ -29,7 +29,7 @@ Inside M6, according to Apple:
 - **A 12-core CPU** (the main processor), with three sizes of core: 2 "super" cores for the fastest single jobs, 4 performance cores and 6 efficiency cores for light background work.
 - **A 12-core GPU** (the graphics processor), two more cores than M5, with a small AI accelerator built into each core.
 - **A dual 16-core Neural Engine**, Apple's dedicated AI hardware.
-- **Up to 170GB/s of memory bandwidth**, meaning how fast data moves between the chip and its memory. That's up from 153GB/s on M5 ([TechCrunch](https://techcrunch.com/2026/10/27/apple-unveils-new-14-inch-macbook-pro-with-m6-chip/)).
+- **Up to 170GB/s of memory bandwidth**, meaning how fast data moves between the chip and its memory. That's up from 153GB/s on M5 ([TechCrunch](https://techcrunch.com/2026/10/27/apple-unveils-new-14-inch-macbook-pro-with-m6-chip/)). The catch: only the 24GB and 32GB versions get 170GB/s. The 16GB base model stays at 153GB/s, per Apple's spec sheet ([MacRumors](https://macrumors.com/2026/10/27/m6-14-inch-macbook-pro-memory-bandwidth-split/)).
 
 | | 14-inch MacBook Pro (M6) | 24-inch iMac (M6) |
 |---|---|---|

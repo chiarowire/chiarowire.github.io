@@ -23,7 +23,7 @@ Files here are public in the repo but not on the site. The daily routine publish
 
 ## Order
 Dated:
-1. `m6-macbook-pro-imac.md`: news, `publishOn: 2026-11-05` (the Macs arrive Nov 6)
+(none)
 
 Slow-news days, top first:
 1. `what-does-3nm-mean.md`: Ostro #3

@@ -140,7 +140,7 @@ Here's our take: four simple habits.
 3. **Ask it to show its work.** Ask where a claim comes from and to say when it isn't sure. Then actually check those sources yourself.
 4. **Remember what it is.** A system that predicts the next word, trained on a huge amount of text and fine-tuned by people to be helpful. Not magic. Not a mind. A very, very good pattern machine.
 
-Prediction turns out to be a theme in modern tech. The feeds you scroll run on it too: see [how the YouTube algorithm works](../how-does-the-youtube-algorithm-work/), where the "score" on every video is really a bet on what you'll do next. And if you want to know how your question physically reaches a chatbot's servers, read [how the internet works](../how-does-the-internet-work/).
+Prediction turns out to be a theme in modern tech. The feeds you scroll run on it too: see [how the YouTube algorithm works](../how-does-the-youtube-algorithm-work/), where the "score" on every video is really a bet on what you'll do next. And if you want to know how your question physically reaches a chatbot's servers, read [how the internet works](../how-does-the-internet-work/). Some of this is starting to run on your own computer instead: Apple's new [M6 MacBook Pro and iMac](../m6-macbook-pro-imac/) are pitched on faster on-device AI.
 
 ## The short version
 
