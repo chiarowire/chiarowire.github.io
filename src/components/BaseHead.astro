@@ -34,6 +34,9 @@ const ldList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 const c = SITE.colors;
 const vars = (t: Record<string, string>) =>
   `--bg:${t.bg};--surface:${t.surface};--text:${t.text};--muted:${t.muted};--accent:${t.accent};--accent-text:${t.accentText};--border:${t.border};`;
+const gcCode = SITE.analytics.goatcounterCode;
+// GoatCounter ignores Do Not Track by default, so honor it here, and count only the live site.
+const gcSettings = `window.goatcounter={no_onload:location.hostname!==${JSON.stringify(new URL(SITE.url).hostname)}||('doNotTrack' in navigator&&navigator.doNotTrack==='1')};`;
 const themeCss = `:root{${vars(c.light)}}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){${vars(c.dark)}}}:root[data-theme="dark"]{${vars(c.dark)}}`;
 ---
 <meta charset="utf-8" />
@@ -75,3 +78,5 @@ const themeCss = `:root{${vars(c.light)}}@media (prefers-color-scheme: dark){:ro
   } catch (e) {}
 </script>
 {ldList.map((ld) => <script type="application/ld+json" set:html={JSON.stringify(ld)} />)}
+{gcCode && <script is:inline set:html={gcSettings}></script>}
+{gcCode && <script is:inline async data-goatcounter={`https://${gcCode}.goatcounter.com/count`} src="https://gc.zgo.at/count.js"></script>}

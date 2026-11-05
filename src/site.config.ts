@@ -44,6 +44,13 @@ export const SITE = {
     bing: '', // Bing Webmaster Tools → meta tag method
   },
 
+  // GoatCounter account code (the "chiarowire" in chiarowire.goatcounter.com). While this is
+  // empty, no tracking script is rendered. Fill it in only in the same push as the updated
+  // Privacy Policy.
+  analytics: {
+    goatcounterCode: '' as string,
+  },
+
   postsPerPageHome: 6,
 } as const;
 
