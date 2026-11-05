@@ -1,5 +1,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { CLUSTERS } from '../site.config';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 export type Post = CollectionEntry<'posts'>;
 
@@ -7,6 +9,24 @@ export type Post = CollectionEntry<'posts'>;
 export async function getPosts(): Promise<Post[]> {
   const all = await getCollection('posts', ({ data }) => (import.meta.env.PROD ? data.draft !== true : true));
   return all.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+}
+
+/**
+ * Slugs of posts waiting in queue/ (repo root, outside the collection, never rendered).
+ * Links to them are unwrapped to plain text until they publish. Read once per build.
+ */
+let queued: Set<string> | undefined;
+export function getQueuedSlugs(): Set<string> {
+  if (queued) return queued;
+  queued = new Set();
+  const dir = join(process.cwd(), 'queue');
+  if (!existsSync(dir)) return queued;
+  for (const f of readdirSync(dir)) {
+    if (!f.endsWith('.md') || f.toLowerCase() === 'readme.md') continue;
+    const m = readFileSync(join(dir, f), 'utf8').match(/^slug:\s*["']?([a-z0-9-]+)/m);
+    queued.add(m ? m[1] : f.replace(/\.md$/, ''));
+  }
+  return queued;
 }
 
 export function getCluster(id: string) {

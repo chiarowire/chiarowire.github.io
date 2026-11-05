@@ -1,9 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LiteYouTube from '../components/LiteYouTube.astro';
 import PostCard from '../components/PostCard.astro';
 import { SITE } from '../site.config';
-import { getPosts, getCluster, readingMinutes, formatDate, isoDate, RESERVED_SLUGS, type Post } from '../lib/posts';
+import { getPosts, getCluster, readingMinutes, formatDate, isoDate, RESERVED_SLUGS, getQueuedSlugs, type Post } from '../lib/posts';
 import { absUrl, clusterPath } from '../lib/url';
 
 export async function getStaticPaths() {
@@ -20,15 +21,29 @@ interface Props {
 }
 const { post, all } = Astro.props;
 const d = post.data;
+const isNews = d.kind === 'news';
+const hasVideo = !!d.youtubeId;
 const cluster = getCluster(d.cluster);
 const url = absUrl(`${post.id}/`);
 const minutes = readingMinutes(post.body);
 const videoTitle = d.videoTitle ?? d.title;
-const watchUrl = `https://www.youtube.com/watch?v=${d.youtubeId}`;
-const image = `https://i.ytimg.com/vi/${d.youtubeId}/maxresdefault.jpg`;
+const watchUrl = hasVideo ? `https://www.youtube.com/watch?v=${d.youtubeId}` : '';
+const image = hasVideo ? `https://i.ytimg.com/vi/${d.youtubeId}/maxresdefault.jpg` : undefined;
+
+// Links to posts that aren't live (drafts in the collection, or files still waiting in
+// queue/) are unwrapped to plain text, so publishing one post never ships a broken link to
+// an unpublished one. Matches the "../<slug>/" links used in posts.
+const liveIds = new Set(all.map((p) => p.id));
+const hiddenIds = new Set(
+  [...(await getCollection('posts')).map((p) => p.id), ...getQueuedSlugs()].filter((id) => !liveIds.has(id)),
+);
+const unlinkHidden = (h: string) =>
+  hiddenIds.size === 0
+    ? h
+    : h.replace(/<a href="(?:\.\.\/|\/)([a-z0-9-]+)\/(?:#[^"]*)?"[^>]*>([\s\S]*?)<\/a>/g, (m, slug, text) => (hiddenIds.has(slug) ? text : m));
 
 // Answer-first intro, THEN the video: split the rendered HTML after the first paragraph.
-const html = post.rendered?.html ?? '';
+const html = unlinkHidden(post.rendered?.html ?? '');
 const cut = html.indexOf('</p>');
 const intro = cut >= 0 ? html.slice(0, cut + 4) : '';
 const rest = cut >= 0 ? html.slice(cut + 4) : html;
@@ -41,32 +56,36 @@ const org = { '@type': 'Organization', name: SITE.name, url: absUrl(), sameAs: [
 const jsonLd: object[] = [
   {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
+    '@type': isNews ? 'NewsArticle' : 'BlogPosting',
     headline: d.title,
     description: d.description,
     datePublished: d.pubDate.toISOString(),
     dateModified: (d.updatedDate ?? d.pubDate).toISOString(),
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     url,
-    image: [image],
+    ...(image ? { image: [image] } : {}),
     keywords: d.keywords.join(', '),
     articleSection: cluster.name,
     author: org,
     publisher: org,
     inLanguage: SITE.locale,
   },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'VideoObject',
-    name: videoTitle,
-    description: d.description,
-    thumbnailUrl: [image, `https://i.ytimg.com/vi/${d.youtubeId}/hqdefault.jpg`],
-    ...(d.videoUploadDate ? { uploadDate: d.videoUploadDate.toISOString() } : { uploadDate: d.pubDate.toISOString() }),
-    ...(d.videoDuration ? { duration: d.videoDuration } : {}),
-    embedUrl: `https://www.youtube.com/embed/${d.youtubeId}`,
-    contentUrl: watchUrl,
-    publisher: { '@type': 'Organization', name: SITE.youtube.channelName, url: SITE.youtube.channelUrl },
-  },
+  ...(hasVideo
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'VideoObject',
+          name: videoTitle,
+          description: d.description,
+          thumbnailUrl: [image, `https://i.ytimg.com/vi/${d.youtubeId}/hqdefault.jpg`],
+          ...(d.videoUploadDate ? { uploadDate: d.videoUploadDate.toISOString() } : { uploadDate: d.pubDate.toISOString() }),
+          ...(d.videoDuration ? { duration: d.videoDuration } : {}),
+          embedUrl: `https://www.youtube.com/embed/${d.youtubeId}`,
+          contentUrl: watchUrl,
+          publisher: { '@type': 'Organization', name: SITE.youtube.channelName, url: SITE.youtube.channelUrl },
+        },
+      ]
+    : []),
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -83,7 +102,7 @@ const jsonLd: object[] = [
   description={d.description}
   type="article"
   image={image}
-  imageAlt={`Thumbnail for the video "${videoTitle}"`}
+  imageAlt={hasVideo ? `Thumbnail for the video "${videoTitle}"` : undefined}
   publishedTime={d.pubDate.toISOString()}
   modifiedTime={(d.updatedDate ?? d.pubDate).toISOString()}
   noindex={d.draft}
@@ -92,7 +111,7 @@ const jsonLd: object[] = [
   <article class="wrap post">
     {d.draft && <p class="draft-banner" role="note">DRAFT: visible in local dev only. A production build leaves this post out.</p>}
     <nav aria-label="Breadcrumb" class="small crumbs">
-      <a href={clusterPath(cluster.id)}>{cluster.name}</a>
+      <a href={clusterPath(cluster.id)}>{cluster.name}</a>{isNews && <span class="muted">{' · '}News</span>}
     </nav>
     <h1>{d.title}</h1>
     <p class="meta muted small">
@@ -103,17 +122,26 @@ const jsonLd: object[] = [
 
     <div class="prose">
       <Fragment set:html={intro} />
-      <LiteYouTube id={d.youtubeId} title={videoTitle} />
+      {hasVideo && <LiteYouTube id={d.youtubeId!} title={videoTitle} />}
       <Fragment set:html={rest} />
     </div>
 
-    <aside class="card cta" aria-label="Watch and subscribe">
-      <p><strong>Prefer watching?</strong> This post is adapted from our video “{videoTitle}”.</p>
-      <p class="actions">
-        <a class="btn" href={watchUrl} rel="noopener">Watch the full video</a>
-        <a href={SITE.youtube.subscribeUrl} rel="noopener">Subscribe to {SITE.youtube.channelName}</a>
-      </p>
-    </aside>
+    {hasVideo ? (
+      <aside class="card cta" aria-label="Watch and subscribe">
+        <p><strong>Prefer watching?</strong> {isNews ? 'We explain this story in our video' : 'This post is adapted from our video'} “{videoTitle}”.</p>
+        <p class="actions">
+          <a class="btn" href={watchUrl} rel="noopener">Watch the full video</a>
+          <a href={SITE.youtube.subscribeUrl} rel="noopener">Subscribe to {SITE.youtube.channelName}</a>
+        </p>
+      </aside>
+    ) : (
+      <aside class="card cta" aria-label="Subscribe">
+        <p><strong>Want the tech behind the headlines?</strong> Our YouTube channel, {SITE.youtube.channelName}, explains it in plain English.</p>
+        <p class="actions">
+          <a class="btn" href={SITE.youtube.subscribeUrl} rel="noopener">Subscribe to {SITE.youtube.channelName}</a>
+        </p>
+      </aside>
+    )}
   </article>
 
   {related.length > 0 && (

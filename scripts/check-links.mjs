@@ -63,5 +63,16 @@ for (const page of pages) {
   }
 }
 
+// A queued post that is already live would be published twice: the queue copy must go.
+const QUEUE = fileURLToPath(new URL('../queue/', import.meta.url));
+if (await exists(QUEUE)) {
+  for (const f of await readdir(QUEUE)) {
+    if (!f.endsWith('.md') || f.toLowerCase() === 'readme.md') continue;
+    const md = await readFile(join(QUEUE, f), 'utf8');
+    const slug = (md.match(/^slug:\s*["']?([a-z0-9-]+)/m) ?? [, f.replace(/\.md$/, '')])[1];
+    if (await exists(join(DIST, slug, 'index.html'))) fail(`queue/${f}: "${slug}" is already live; delete the queue copy`);
+  }
+}
+
 console.log(`Checked ${pages.length} pages: ${problems === 0 ? 'all good' : problems + ' problem(s)'}`);
 process.exit(problems ? 1 : 0);
