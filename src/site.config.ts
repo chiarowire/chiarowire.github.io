@@ -40,7 +40,7 @@ export const SITE = {
 
   // Search engine ownership tags (paste the content="..." value only). Filled after launch.
   verification: {
-    google: '', // Google Search Console → HTML tag method
+    google: 'nhfEIq6aZhld3hKQdrzZuZNNf88U1ftKeHNJXqk_2wA', // Google Search Console → HTML tag method
     bing: '', // Bing Webmaster Tools → meta tag method
   },
 
