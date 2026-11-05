@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { SITE, CLUSTERS } from '../../site.config';
+import { getPosts, type Post } from '../../lib/posts';
+import { absUrl, href } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return CLUSTERS.map((c) => ({
+    params: { cluster: c.id },
+    props: { cluster: c, posts: posts.filter((p) => p.data.cluster === c.id) },
+  }));
+}
+
+interface Props {
+  cluster: (typeof CLUSTERS)[number];
+  posts: Post[];
+}
+const { cluster, posts } = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: cluster.name,
+  description: cluster.description,
+  url: absUrl(`topics/${cluster.id}/`),
+  isPartOf: { '@type': 'WebSite', name: SITE.name, url: absUrl() },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: posts.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: absUrl(`${p.id}/`), name: p.data.title })),
+  },
+};
+---
+<BaseLayout title={`${cluster.name}: explainers`} description={cluster.description} jsonLd={jsonLd}>
+  <div class="wrap">
+    <p class="small"><a href={href('topics/')}>All topics</a></p>
+    <h1>{cluster.name}</h1>
+    <p class="muted">{cluster.description}</p>
+    {posts.length > 0 ? (
+      <div class="grid">
+        {posts.map((post) => <PostCard post={post} headingLevel={2} />)}
+      </div>
+    ) : (
+      <p>No posts here yet. The videos are on <a href={SITE.youtube.channelUrl} rel="noopener">YouTube</a> in the meantime.</p>
+    )}
+  </div>
+</BaseLayout>

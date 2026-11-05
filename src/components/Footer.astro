@@ -1,0 +1,27 @@
+---
+import { SITE } from '../site.config';
+import { href } from '../lib/url';
+const year = new Date().getUTCFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap-wide">
+    <p class="cta">New explainers land on YouTube first: <a href={SITE.youtube.subscribeUrl} rel="noopener">subscribe to {SITE.youtube.channelName}</a>.</p>
+    <nav aria-label="Site">
+      <ul>
+        <li><a href={href('about/')}>About</a></li>
+        <li><a href={href('contact/')}>Contact</a></li>
+        <li><a href={href('privacy/')}>Privacy Policy</a></li>
+        <li><a href={href('affiliate-disclosure/')}>Affiliate Disclosure</a></li>
+        <li><a href={href('terms/')}>Terms</a></li>
+        <li><a href={href('rss.xml')}>RSS</a></li>
+      </ul>
+    </nav>
+    <p class="muted small">© {year} {SITE.name}. {SITE.tagline}</p>
+  </div>
+</footer>
+<style>
+  .site-footer { border-top: 1px solid var(--border); margin-top: 4rem; padding: 2rem 0 2.5rem; background: var(--surface); font-size: 0.95rem; }
+  .site-footer ul { list-style: none; padding: 0; margin: 0 0 1rem; display: flex; flex-wrap: wrap; gap: 0.25rem 1.2rem; }
+  .site-footer li { margin: 0; }
+  .site-footer nav a { display: inline-block; padding: 0.35rem 0; color: var(--text); }
+</style>

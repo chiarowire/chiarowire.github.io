@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CLUSTERS } from '../../site.config';
+import { getPosts } from '../../lib/posts';
+import { clusterPath, postPath } from '../../lib/url';
+
+const posts = await getPosts();
+---
+<BaseLayout title="All topics" description="Every explainer, grouped by topic: AI, hardware, and the internet.">
+  <div class="wrap">
+    <h1>All topics</h1>
+    {CLUSTERS.map((c) => {
+      const list = posts.filter((p) => p.data.cluster === c.id);
+      return (
+        <section>
+          <h2><a href={clusterPath(c.id)}>{c.name}</a></h2>
+          <p class="muted">{c.description}</p>
+          {list.length > 0 ? (
+            <ul>{list.map((p) => <li><a href={postPath(p.id)}>{p.data.title}</a></li>)}</ul>
+          ) : (
+            <p class="small muted">Coming soon.</p>
+          )}
+        </section>
+      );
+    })}
+  </div>
+</BaseLayout>

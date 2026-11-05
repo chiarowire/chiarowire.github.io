@@ -1,0 +1,89 @@
+---
+// Fast YouTube embed (facade): shows the thumbnail + a play button and only loads the
+// real player (from youtube-nocookie.com) after the reader clicks. Without JS it is a
+// plain link to the video on YouTube.
+interface Props {
+  id: string;
+  title: string;
+  eager?: boolean;
+}
+const { id, title, eager = true } = Astro.props;
+const watchUrl = `https://www.youtube.com/watch?v=${id}`;
+const thumb = (name: string) => `https://i.ytimg.com/vi/${id}/${name}.jpg`;
+---
+<figure class="lite-yt">
+  <a class="lite-yt__link" href={watchUrl} data-yt-id={id} data-yt-title={title} rel="noopener">
+    <img
+      src={thumb('hqdefault')}
+      srcset={`${thumb('mqdefault')} 320w, ${thumb('hqdefault')} 480w, ${thumb('sddefault')} 640w, ${thumb('maxresdefault')} 1280w`}
+      sizes="(min-width: 46rem) 44rem, 100vw"
+      width="1280"
+      height="720"
+      alt=""
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : 'auto'}
+      decoding="async"
+    />
+    <span class="lite-yt__play" aria-hidden="true">
+      <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.5 7.7A8.5 8.5 0 0 0 60.5 1.7C55.2.3 34 .3 34 .3S12.8.3 7.5 1.7a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6c5.3 1.4 26.5 1.4 26.5 1.4s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#e00"></path><path d="M45 24 27 14v20z" fill="#fff"></path></svg>
+    </span>
+    <span class="sr-only">Play video: {title}</span>
+  </a>
+  <figcaption class="muted small">Video: “{title}” on <a href={watchUrl} rel="noopener">YouTube</a>.</figcaption>
+</figure>
+
+<style>
+  .lite-yt { margin: 1.5rem 0 2rem; }
+  .lite-yt__link, .lite-yt iframe {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    border: 0;
+  }
+  .lite-yt__link img { width: 100%; height: 100%; object-fit: cover; }
+  .lite-yt__play {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
+    transition: transform 0.15s ease;
+  }
+  .lite-yt__link:hover .lite-yt__play, .lite-yt__link:focus-visible .lite-yt__play { transform: scale(1.08); }
+  .lite-yt figcaption { margin-top: 0.5rem; }
+</style>
+
+<script>
+  let warmed = false;
+  const warm = () => {
+    if (warmed) return;
+    warmed = true;
+    for (const origin of ['https://www.youtube-nocookie.com', 'https://www.google.com']) {
+      const l = document.createElement('link');
+      l.rel = 'preconnect';
+      l.href = origin;
+      document.head.append(l);
+    }
+  };
+  document.querySelectorAll<HTMLAnchorElement>('.lite-yt__link').forEach((a) => {
+    a.addEventListener('pointerover', warm, { once: true });
+    a.addEventListener('focus', warm, { once: true });
+    a.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+      e.preventDefault();
+      const id = a.dataset.ytId!;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.title = a.dataset.ytTitle ?? 'YouTube video';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      a.replaceWith(iframe);
+      iframe.focus();
+    });
+  });
+</script>

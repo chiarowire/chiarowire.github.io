@@ -1,0 +1,14 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE } from '../site.config';
+const email = SITE.contactEmail;
+---
+<PageLayout title="Contact" description={`How to reach ${SITE.name}.`}>
+  {email ? (
+    <p>Questions, corrections or ideas for an explainer? Email us at <a href={`mailto:${email}`}>{email}</a>.</p>
+  ) : (
+    <p>A contact email is coming soon. Until then, the best way to reach us is a comment on any video on our YouTube channel, <a href={SITE.youtube.channelUrl} rel="noopener">{SITE.youtube.channelName}</a>. We read them.</p>
+  )}
+  <h2>Spotted a mistake?</h2>
+  <p>Tell us which post and what's wrong, and if you can, link a source. We correct errors and mark the post with its update date.</p>
+</PageLayout>

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+
+# Unapproved drafts stay local: they render in `npm run dev` only and never enter the public repo.
+src/content/posts/drafts/

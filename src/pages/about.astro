@@ -1,0 +1,25 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE, CLUSTERS } from '../site.config';
+import { clusterPath, href } from '../lib/url';
+---
+<PageLayout title={`About ${SITE.name}`} description={`What ${SITE.name} is, how we make our explainers, and how we check our facts.`}>
+  <p><strong>{SITE.name}</strong> explains the technology you use every day in plain English. No jargon walls, no hype, no pretending. Just how things actually work, and why it matters to you.</p>
+
+  <p><strong>{SITE.name} is the written side of <a href={SITE.youtube.channelUrl} rel="noopener">{SITE.youtube.channelName}</a></strong>, our "tech, explained" YouTube channel. Every post here is the written companion to one of its videos, and "chiaro" is Italian for "clear", which is the whole idea. Watch the video, read the post, or both. The post lets you skim, search and come back to the details. The video shows it moving.</p>
+
+  <h2>What we cover</h2>
+  <ul>
+    {CLUSTERS.map((c) => <li><a href={clusterPath(c.id)}>{c.name}</a>: {c.description}</li>)}
+  </ul>
+
+  <h2>How we check facts</h2>
+  <p>Every number, date and claim in a post traces back to a published source, and we prefer primary ones: research papers, official documentation, company announcements and standards bodies. Key sources are linked in each post. When something was true "this week" in a video, the post gives the actual date so it doesn't age into a wrong statement.</p>
+  <p>Analogies are labelled as analogies. Opinions are labelled as our take. If we get something wrong, we fix it and note the update date at the top of the post.</p>
+
+  <h2>Our voice</h2>
+  <p>We write as "we": the {SITE.name} team. We won't invent personal stories or fake experiences to make a post feel human. The explanations should do that work on their own.</p>
+
+  <h2>Money, honestly</h2>
+  <p>This site is free to read. In the future it may carry ads or affiliate links. If it does, we'll say so clearly on the page, and our <a href={href("affiliate-disclosure/")}>affiliate disclosure</a> explains how that works. Nothing we explain is shaped by who pays.</p>
+</PageLayout>

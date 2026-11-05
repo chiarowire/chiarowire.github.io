@@ -1,0 +1,23 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE } from '../site.config';
+import { href } from '../lib/url';
+---
+<PageLayout title="Terms of Use" description={`The terms for using ${SITE.name}.`} updated="2026-11-04">
+  <p>By using {SITE.name} (the "site"), you agree to these terms. If you don't agree, please don't use the site.</p>
+
+  <h2>Educational content only</h2>
+  <p>Everything here is general educational information about technology. It isn't professional, financial, legal or technical advice for your specific situation. We work hard to be accurate and we cite our sources, but technology changes fast, and we can't promise every detail is complete or current. Check anything important against the linked sources.</p>
+
+  <h2>Our content</h2>
+  <p>Unless noted otherwise, the text, diagrams and design of this site belong to {SITE.name}. You're welcome to quote short excerpts with a link back to the original post. Please don't republish whole posts without permission.</p>
+
+  <h2>Videos and links to other sites</h2>
+  <p>Posts embed videos from YouTube and link to other websites. We don't control those services and aren't responsible for their content or policies. Your use of YouTube is governed by YouTube's own terms.</p>
+
+  <h2>No warranty</h2>
+  <p>The site is provided "as is", without warranties of any kind. To the fullest extent the law allows, {SITE.name} isn't liable for any loss or damage arising from your use of the site.</p>
+
+  <h2>Changes</h2>
+  <p>We may update these terms. The date at the top shows the latest version. See also our <a href={href('privacy/')}>privacy policy</a> and <a href={href('affiliate-disclosure/')}>affiliate disclosure</a>.</p>
+</PageLayout>

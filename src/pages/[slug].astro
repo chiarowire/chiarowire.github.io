@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LiteYouTube from '../components/LiteYouTube.astro';
+import PostCard from '../components/PostCard.astro';
+import { SITE } from '../site.config';
+import { getPosts, getCluster, readingMinutes, formatDate, isoDate, RESERVED_SLUGS, type Post } from '../lib/posts';
+import { absUrl, clusterPath } from '../lib/url';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  for (const p of posts) {
+    if (RESERVED_SLUGS.includes(p.id)) throw new Error(`Post slug "${p.id}" collides with a site page. Pick another slug.`);
+  }
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post, all: posts } }));
+}
+
+interface Props {
+  post: Post;
+  all: Post[];
+}
+const { post, all } = Astro.props;
+const d = post.data;
+const cluster = getCluster(d.cluster);
+const url = absUrl(`${post.id}/`);
+const minutes = readingMinutes(post.body);
+const videoTitle = d.videoTitle ?? d.title;
+const watchUrl = `https://www.youtube.com/watch?v=${d.youtubeId}`;
+const image = `https://i.ytimg.com/vi/${d.youtubeId}/maxresdefault.jpg`;
+
+// Answer-first intro, THEN the video: split the rendered HTML after the first paragraph.
+const html = post.rendered?.html ?? '';
+const cut = html.indexOf('</p>');
+const intro = cut >= 0 ? html.slice(0, cut + 4) : '';
+const rest = cut >= 0 ? html.slice(cut + 4) : html;
+
+// Next reads: same cluster first, then newest others.
+const others = all.filter((p) => p.id !== post.id);
+const related = [...others.filter((p) => p.data.cluster === d.cluster), ...others.filter((p) => p.data.cluster !== d.cluster)].slice(0, 3);
+
+const org = { '@type': 'Organization', name: SITE.name, url: absUrl(), sameAs: [SITE.youtube.channelUrl] };
+const jsonLd: object[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: d.title,
+    description: d.description,
+    datePublished: d.pubDate.toISOString(),
+    dateModified: (d.updatedDate ?? d.pubDate).toISOString(),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    url,
+    image: [image],
+    keywords: d.keywords.join(', '),
+    articleSection: cluster.name,
+    author: org,
+    publisher: org,
+    inLanguage: SITE.locale,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: videoTitle,
+    description: d.description,
+    thumbnailUrl: [image, `https://i.ytimg.com/vi/${d.youtubeId}/hqdefault.jpg`],
+    ...(d.videoUploadDate ? { uploadDate: d.videoUploadDate.toISOString() } : { uploadDate: d.pubDate.toISOString() }),
+    ...(d.videoDuration ? { duration: d.videoDuration } : {}),
+    embedUrl: `https://www.youtube.com/embed/${d.youtubeId}`,
+    contentUrl: watchUrl,
+    publisher: { '@type': 'Organization', name: SITE.youtube.channelName, url: SITE.youtube.channelUrl },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: absUrl() },
+      { '@type': 'ListItem', position: 2, name: cluster.name, item: absUrl(`topics/${cluster.id}/`) },
+      { '@type': 'ListItem', position: 3, name: d.title, item: url },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={d.title}
+  description={d.description}
+  type="article"
+  image={image}
+  imageAlt={`Thumbnail for the video "${videoTitle}"`}
+  publishedTime={d.pubDate.toISOString()}
+  modifiedTime={(d.updatedDate ?? d.pubDate).toISOString()}
+  noindex={d.draft}
+  jsonLd={jsonLd}
+>
+  <article class="wrap post">
+    {d.draft && <p class="draft-banner" role="note">DRAFT: visible in local dev only. A production build leaves this post out.</p>}
+    <nav aria-label="Breadcrumb" class="small crumbs">
+      <a href={clusterPath(cluster.id)}>{cluster.name}</a>
+    </nav>
+    <h1>{d.title}</h1>
+    <p class="meta muted small">
+      <time datetime={isoDate(d.pubDate)}>{formatDate(d.pubDate)}</time>
+      {d.updatedDate && <>{' · '}Updated <time datetime={isoDate(d.updatedDate)}>{formatDate(d.updatedDate)}</time></>}
+      {' · '}{minutes} min read
+    </p>
+
+    <div class="prose">
+      <Fragment set:html={intro} />
+      <LiteYouTube id={d.youtubeId} title={videoTitle} />
+      <Fragment set:html={rest} />
+    </div>
+
+    <aside class="card cta" aria-label="Watch and subscribe">
+      <p><strong>Prefer watching?</strong> This post is adapted from our video “{videoTitle}”.</p>
+      <p class="actions">
+        <a class="btn" href={watchUrl} rel="noopener">Watch the full video</a>
+        <a href={SITE.youtube.subscribeUrl} rel="noopener">Subscribe to {SITE.youtube.channelName}</a>
+      </p>
+    </aside>
+  </article>
+
+  {related.length > 0 && (
+    <section class="wrap" aria-labelledby="next-h">
+      <h2 id="next-h">Read next</h2>
+      <div class="grid">
+        {related.map((p) => <PostCard post={p} />)}
+      </div>
+      <p class="small"><a href={clusterPath(cluster.id)}>More in {cluster.name} →</a></p>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .post { padding-top: 1rem; }
+  .crumbs { margin: 0.5rem 0 0; font-weight: 600; }
+  .meta { margin-top: 0; }
+  .cta { margin-top: 2.5rem; }
+  .cta p { margin: 0 0 0.6em; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; }
+</style>
