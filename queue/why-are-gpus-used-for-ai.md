@@ -1,125 +1,90 @@
 ---
-title: "Why Are GPUs Used for AI? (CPU vs GPU, Explained)"
-description: "AI math is millions of small, independent sums, the exact job gaming chips were built for. CPU vs GPU, the AlexNet moment, and how Nvidia got so big."
+title: "Why AI Runs on Gaming Chips, and What It Means for You"
+description: "AI runs on chips built for video games. Here's why, in plain English, and how that demand is reaching the prices of phones, PCs and consoles."
 slug: why-are-gpus-used-for-ai
+kind: news
 pubDate: 2026-11-04
 cluster: hardware
-youtubeId: qM1KF_ZrZ5E
-videoTitle: "Why AI Runs on Gaming Chips, and How Nvidia Hit $5 Trillion"
-videoUploadDate: 2026-10-07T04:52:57Z
-videoDuration: PT11M9S
 keywords:
+  - why does ai run on gaming chips
   - why are gpus used for ai
-  - why are gpus used for ai instead of cpu
-  - cpu vs gpu for ai
-  - why does ai use nvidia chips
-  - what is cuda
-  - what is alexnet
+  - why does ai use gpus
+  - why are graphics cards so expensive
+  - why are phones more expensive
+  - how does ai affect prices
 draft: true
 ---
 
-<!-- recheck Nvidia market cap before publishing (post says ~$4.8T, #2 behind Apple ~$5.1T, as of Nov 4, 2026). Also recheck the latest-quarter revenue line if Nvidia has reported Q3 FY27. Delete this comment once done. -->
+<!-- Publish note: recheck the dated figures first. RTX 5070 prices (checked Nov 2-3, 2026), IDC's phone and PC figures (latest checked Oct 14, 2026), the Switch 2 US price. If Nvidia has reported the quarter that ended Oct 25, 2026 (results due Nov 17, 2026), replace the July quarter's Data Center and Edge Computing figures with the new ones from its press release, using the same two labels. Cut anything you can't confirm. Keep it free of advice, stock talk and market value. Delete this note once done. -->
 
-Why are GPUs used for AI? Because AI models mostly do one kind of math, multiplying huge grids of numbers, and that work splits into millions of small sums that don't depend on each other. A GPU has thousands of simple cores built to do many sums at once, so it finishes that work far faster than a CPU.
+Why does AI run on gaming chips? Because AI, like a video game, comes down to a huge pile of simple math done all at once, and graphics chips were built for exactly that. The part that reaches you: demand for those chips and their memory now shows up in the price of phones, PCs and consoles.
 
-GPUs don't win because each core is smart. They win because there are so many of them. Here's how a gaming chip ended up running AI, and how Nvidia ended up at the center of it.
+Here's the short version of how a chip made for games ended up running ChatGPT, and why it matters even if you've never played a game on a PC.
 
-## What's the difference between a CPU and a GPU?
+## Why are GPUs used for AI?
 
-The **CPU** (central processing unit) is the general-purpose brain of a computer. It runs the operating system, your browser and your apps, and it's built to handle almost anything. It does that with a small number of very powerful **cores**. Think of a core as one worker following its own list of instructions. Intel's Core Ultra 9 285K, a high-end desktop chip, has 24 of them ([Intel](https://www.intel.com/content/www/us/en/products/sku/241060/intel-core-ultra-9-processor-285k-36m-cache-up-to-5-70-ghz/specifications.html)). Each one is fast and flexible, and great at work where step two depends on step one.
+A GPU, or graphics processing unit, is the chip that draws what you see in a game. Intel says GPUs were originally designed to speed up the rendering of 3D graphics ([Intel](https://www.intel.com/content/www/us/en/products/docs/processors/what-is-a-gpu.html)). That's a big job: a 1080p screen has about 2 million pixels, and a game redraws them many times a second. But the math for each pixel is simple.
 
-The **GPU** (graphics processing unit) is different. As Intel puts it, GPUs were originally designed to speed up the rendering of 3D graphics ([Intel](https://www.intel.com/content/www/us/en/products/docs/processors/what-is-a-gpu.html)). In plain English: drawing the picture on your screen.
+So a GPU works differently from the main processor in your computer, the CPU. Intel describes the CPU as using fewer cores on individual tasks, while the GPU splits work across many smaller cores at the same time ([Intel](https://www.intel.com/content/www/us/en/products/docs/processors/cpu-vs-gpu.html)).
 
-That's a huge job. A 1080p screen has about **2 million pixels**. If a game redraws all of them 60 times a second, that's more than **120 million pixel colors every second** (1920 × 1080 × 60). But each pixel's math is fairly simple, mostly the same as its neighbor's, and most pixels don't have to wait for each other.
+Think of the CPU as a few brilliant experts, and the GPU as a stadium full of people with calculators. Give the experts one tricky problem and they'll nail it. Give the stadium a million easy sums and it finishes first.
 
-So instead of a few heavyweight workers, a GPU uses a huge crowd of small, simple ones working at the same time. That's **parallel processing**. Nvidia's GeForce RTX 5090, a gaming card, lists **21,760** of what Nvidia calls CUDA cores ([Nvidia](https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/)).
+AI turned out to be a stadium job. An AI model does an enormous amount of simple math, and much of it can happen at the same time. The Computer History Museum notes that training this kind of AI involves repeated math best done in parallel, which is what 3D graphics chips are designed for ([CHM](https://computerhistory.org/blog/chm-releases-alexnet-source-code/)). In other words, games and AI want the same thing: a crowd of simple workers.
 
-That isn't an apples-to-apples comparison. A GPU core is a much simpler unit than a CPU core, and on its own it isn't very clever. That's the point.
+The moment that proved it came in 2012. A University of Toronto team trained an image-recognition AI that won a major contest, using just two Nvidia GTX 580 graphics cards and five to six days of computing ([paper](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)). Those were cards meant for gaming ([Tom's Hardware](https://www.tomshardware.com/tech-industry/artificial-intelligence/two-gtx-580s-in-sli-are-responsible-for-the-ai-we-have-today-nvidias-huang-revealed-that-the-invention-of-deep-learning-began-with-two-flagship-fermi-gpus-in-2012)). The museum calls that result a turning point for AI.
 
-| | CPU | GPU |
-|---|---|---|
-| Cores | A few, powerful (24 in a Core Ultra 9 285K) | Thousands, simple (21,760 CUDA cores in an RTX 5090) |
-| Best at | Varied work with lots of steps and decisions | The same simple math repeated massively |
-| Analogy | A few brilliant experts | A stadium full of people with calculators |
-| Job in a PC | Runs the show | Takes the big, repetitive jobs (graphics, AI) |
+## Is AI really running on gaming cards?
 
-Hand the experts one tricky problem with lots of steps and they'll nail it. Hand the stadium a million simple sums that can all be done at once, and it finishes long before the experts. That's why the two work as a team. Intel describes the GPU as a complement to the CPU: the CPU runs the show, and the big repetitive jobs go to the GPU.
+Not literally, not anymore. "Gaming chips" is shorthand. The GPUs in AI data centers are built for that work, not pulled out of a gaming PC. They're the same idea at a much bigger scale. Back in 2020, Microsoft announced a supercomputer for OpenAI with 10,000 GPUs ([Microsoft](https://news.microsoft.com/source/features/ai/openai-azure-supercomputer/)).
 
-## Why are GPUs used for AI instead of CPUs?
+Nvidia isn't the only name here, either. AMD sells GPUs for data centers, called [Instinct](https://www.amd.com/en/products/accelerators/instinct.html), and Google designs its own AI chips, called [TPUs](https://docs.cloud.google.com/tpu/docs/intro-to-tpu).
 
-Because AI turns out to be a GPU-shaped problem.
+You can see how far the balance has moved in Nvidia's own reports. The company started in 1993 with a plan to bring 3D graphics to PCs ([Nvidia](https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/)). In its fiscal year that ended in January 2026, its data center business brought in $193.7 billion, while gaming and AI PCs brought in $16.0 billion ([Nvidia](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26pr.htm)).
 
-A large language model is basically billions of little dials called **parameters**. GPT-3, back in 2020, had **175 billion** of them ([Brown et al.](https://arxiv.org/abs/2005.14165)). When a model works on your message, those dials get pulled into a staggering number of calculations, and most of that work boils down to one kind of math: **multiplying big grids of numbers**, which mathematicians call matrices.
+Nvidia no longer breaks out gaming on its own. Its reports now use a group called Edge Computing, which covers PCs, game consoles, workstations, robotics and cars ([Nvidia](https://s201.q4cdn.com/141608511/files/doc_financials/2027/Q127/Q1FY27-CFO-Commentary.pdf)). In the three months that ended July 26, 2026, Data Center revenue was $89.0 billion and Edge Computing was $7.2 billion ([Nvidia](https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000073/q2fy27pr.htm)). The hobby that started it all is now the small side of the business.
 
-You don't need to know how to do matrix math. Here's the only part that matters: multiplying two big matrices means millions of tiny steps (multiply two numbers, add the result to a running total), over and over. And most of those steps don't depend on each other.
+## How does this affect the AI tools you use?
 
-That's the pixel problem all over again: tons of simple, independent sums. The Computer History Museum puts it neatly. Neural network training involves "a lot of repeated matrix multiplications, preferably done in parallel," which is exactly what 3D graphics chips are designed to do ([CHM](https://computerhistory.org/blog/chm-releases-alexnet-source-code/)). Google says the same about its own AI chips: they're built for the large matrix operations common in machine learning ([Google Cloud](https://docs.cloud.google.com/tpu/docs/intro-to-tpu)).
+Every chatbot answer means real chips doing real work in a data center, and that isn't free. It helps explain why AI tools come with caps.
 
-So video games and AI models want the same thing: **a crowd**.
+- **Gemini:** Google says its Gemini apps have "compute-based usage limits", which depend on how complex your prompt is and which models and features you use ([Google](https://support.google.com/gemini/answer/16275805?hl=en)).
+- **ChatGPT:** OpenAI says free users get unlimited everyday text chats, but tools like image creation, file uploads and voice have separate limits. Paid Plus users get higher limits ([OpenAI](https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq)).
 
-## When did GPUs start being used for AI?
+So plain text chat can feel unlimited while heavier tools hit a cap. Thousands of chips running at once also need a lot of power and cooling, which we cover in [where cloud photos are stored](../where-are-cloud-photos-stored/). If you want to know what the calculations actually produce, read [how ChatGPT works](../how-does-chatgpt-work/).
 
-The moment it really clicked was **2012**. Alex Krizhevsky, a graduate student at the University of Toronto, working with Ilya Sutskever and Geoffrey Hinton, built an image-recognition network that became known as **AlexNet**.
+## Why are graphics cards, phones and PCs getting more expensive?
 
-- They trained it on **two Nvidia GTX 580s**, graphics cards built for gaming.
-- Training took **five to six days**.
-- The code was written in **CUDA**, Nvidia's tool for programming its GPUs.
+Here's where it reaches your wallet, and for most devices the link is memory, not the chips themselves. AI chips need a lot of fast memory, and only so many factories make it. IDC, a research firm that tracks the industry, says "major memory makers have shifted production toward memory used in AI data centers" ([IDC](https://www.idc.com/resource-center/blog/global-memory-shortage-crisis-market-analysis-and-the-potential-impact-on-the-smartphone-and-pc-markets-in-2026/)). Factory space used for AI memory can't also make memory for phones and laptops.
 
-AlexNet then entered the 2012 ImageNet image-recognition competition, and won by a landslide. Each system got five guesses per photo:
+One example: in December 2025, memory maker Micron said it would leave its Crucial consumer business, citing AI-driven data center demand ([Micron](https://investors.micron.com/news/press-release/2025/Micron-Announces-Exit-from-Crucial-Consumer-Business-12-03-2025/default.aspx)). IDC said in October 2026 that memory costs had risen about 350% in a year and called this an "AI-led memory crisis" ([IDC](https://www.idc.com/resource-center/press-releases/smartphone-shipments-decline-3q26/)).
 
-| Entry | Test images it missed (top-5 error) |
+Here's what that looks like on the shelf:
+
+| What you'd buy | What's happening |
 |---|---|
-| AlexNet | 15.3% |
-| Second-best entry | 26.2% |
+| Gaming graphics cards | The Nvidia RTX 5070 launched at about $550. TechSpot's November 2 check put it 48% above that ([TechSpot](https://techspot.com/article/3192-gpu-pricing-q4-2026)). Tom's Hardware's November 3 update listed the best US price at $899 ([Tom's Hardware](https://www.tomshardware.com/pc-components/gpus/lowest-gpu-prices-tracking)) |
+| Phones | In August, IDC forecast that the average phone worldwide will sell for $581 in 2026, up 27.6% in a year ([IDC](https://www.idc.com/resource-center/blog/smartphone-shipments-set-for-record-16-7-drop-in-2026-as-the-memory-crisis-hits-full-force/)) |
+| PCs | In June, IDC forecast that average PC prices will rise 17% in 2026 ([IDC](https://www.idc.com/resource-center/blog/pc-market-enters-volatile-territory-as-memory-shortage-persists-through-2027/)) |
+| Consoles | The Nintendo Switch 2's US list price went from $449.99 to $499.99 on September 1, 2026 ([Nintendo](https://www.nintendo.co.jp/corporate/release/en/2026/260508.html)) |
 
-*Source: the AlexNet paper ([Krizhevsky, Sutskever, Hinton, NeurIPS 2012](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)).*
+Some caution on reading that table:
 
-That wasn't a small win. It was a different league. In the Computer History Museum's words, before AlexNet very few machine learning researchers used neural networks, and after it, almost all of them would.
+- **An average isn't your phone.** It's a forecast across all phones sold. IDC says the cheapest phones are hit hardest and premium phones should hold up better.
+- **Nintendo didn't blame AI.** It said the change wasn't due to any one factor, and named memory and other component prices, exchange rates and oil ([Nintendo](https://www.nintendo.co.jp/ir/pdf/2026/260511e.pdf)).
+- **Memory doesn't explain everything.** TechSpot says some graphics card increases are bigger than memory costs alone can account for.
 
-## Are GPUs used for AI training or for running models?
+## Will these things be harder to find?
 
-Both. **Training** is the giant job of tuning all those dials. **Using** the model (answering your question, which engineers call inference) is smaller per message, but it happens for every message, from every user. Both lean on the same matrix math. In 2026, Google started making two separate AI chips for the first time: one built for training and one built for running models ([Google](https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/)).
+Some already are. On its February 2026 earnings call, Nvidia said it expected limited supply to hold back its gaming business ([transcript](https://www.fool.com/earnings/call-transcripts/2026/02/25/nvidia-nvda-q4-2026-earnings-call-transcript)). It didn't say which cards ([PCWorld](https://www.pcworld.com/article/3072665/nvidia-gpu-shortages-are-here-again.html)). Tom's Hardware's tracker describes higher-end cards like the RTX 5070 Ti and RTX 5080 as being in poor supply at any reasonable price.
 
-That's how GPUs went from gaming PCs to rooms full of them. Back in 2020, Microsoft announced a supercomputer it built for OpenAI with **10,000 GPUs** ([Microsoft](https://news.microsoft.com/source/features/ai/openai-azure-supercomputer/)).
+You might also get less for the money. Research firm TrendForce says PC makers are cutting storage in mainstream models ([TrendForce](https://www.trendforce.com/presscenter/news/20260930-13258.html)).
 
-If you want the other half of this story, what those calculations actually produce, read [how ChatGPT works](../how-does-chatgpt-work/).
+Forecasters don't see a quick fix. In June, IDC said it saw no real relief for PCs before the end of 2027 and that prices were unlikely to return to 2025 levels ([IDC](https://www.idc.com/resource-center/blog/pc-market-enters-volatile-territory-as-memory-shortage-persists-through-2027/)). For phones, it said in October that any market recovery would wait until 2028 at the earliest ([IDC](https://www.idc.com/resource-center/press-releases/smartphone-shipments-decline-3q26/)). Those are forecasts, not facts, and they can change.
 
-## Why does AI use Nvidia chips?
+## Is it worth caring about?
 
-Plenty of companies make chips. So how did one company end up with the crown?
+**Our take:** yes, because this has moved past tech news and into everyday prices.
 
-| Year | What Nvidia did |
-|---|---|
-| 1993 | Founded by Jensen Huang, Chris Malachowsky and Curtis Priem, famously after talking through the idea at a Denny's in Silicon Valley. The plan: realistic 3D graphics on PCs, for gaming and multimedia ([Nvidia](https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/)) |
-| 1999 | Launched the GeForce 256, marketed as the world's first GPU |
-| 2006 | Unveiled **CUDA**, which lets programmers use the GPU's crowd of cores for general-purpose math, not just graphics |
-| 2017 | Added **Tensor Cores**, circuits designed specifically for matrix math |
+If you only use a chatbot now and then, you'll mostly notice it as usage limits. If you're pricing up a new phone, laptop or console, this is a big part of why those price tags look the way they do. PC gamers and people looking at the cheapest phones feel it most, because they're now competing with AI for the same kinds of parts.
 
-AI wasn't the target in 2006. But six years later, when Krizhevsky needed to train a neural network fast, CUDA was already there.
-
-**Our take:** Nvidia's real edge isn't only the chips. Chips can be matched. Years of software, tools and programmer habits built around CUDA are much harder to copy.
-
-### How big did Nvidia get?
-
-Then ChatGPT arrived at the end of 2022, and you can see what happened in Nvidia's own numbers for its data center business, the part that sells chips for data centers:
-
-| Nvidia fiscal year | Data center revenue |
-|---|---|
-| Ended January 2023 | about $15.0 billion ([Nvidia](https://www.sec.gov/Archives/edgar/data/1045810/000104581023000014/q4fy23pr.htm)) |
-| Ended January 2026 | $193.7 billion ([Nvidia](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26pr.htm)) |
-
-That's nearly **13 times as much in three years**. Gaming, the original business, brought in $16.0 billion that same year. It's now the small one. In the three months that ended in July 2026, Nvidia reported **$96.2 billion** in total revenue in a single quarter ([Nvidia](https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000073/q2fy27pr.htm)). That was its latest reported quarter as of November 4, 2026.
-
-Wall Street noticed. Nvidia first hit **$1 trillion** in market value in May 2023, and on **October 29, 2025** it became the first company ever valued at **$5 trillion**. Market values move every day, though. When we checked on **November 4, 2026**, Nvidia was worth roughly **$4.8 trillion**, second behind Apple at about $5.1 trillion ([CompaniesMarketCap](https://companiesmarketcap.com/), [StockAnalysis](https://stockanalysis.com/list/biggest-companies/)). Treat that as a snapshot.
-
-One detail people often miss: Nvidia doesn't make its chips in its own factories. It designs them, and outside manufacturers like Taiwan's TSMC build them. How that works, and why so few companies can do it, is in [what 3nm really means](../what-does-3nm-mean/).
-
-Nvidia isn't the only player, either. AMD sells its own data center GPUs, called Instinct. And Google designs its own AI chips, called TPUs, built around the same matrix math.
-
-## What does this mean for you?
-
-- **AI isn't free to run.** Every chatbot answer means real chips doing real math in a real data center. When AI tools come with usage limits or paid plans, that's what's on the other end. (All that hardware also uses a lot of electricity, as we show in [where cloud photos are stored](../where-are-cloud-photos-stored/).)
-- **You might already own some of this.** If you game on a PC, a GPU does the drawing. And some newer laptops include a separate part built just for AI tasks, called an **NPU** (neural processing unit). Intel's Core Ultra chips are one example. Apple's version is the Neural Engine, which appears in its new [M6 MacBook Pro and iMac](../m6-macbook-pro-imac/).
-- **A great company isn't the same as a great stock.** Nvidia's chips being in demand doesn't tell you whether its shares are worth buying at any price. This isn't investment advice, and we'll never tell you to buy or sell anything.
-
-So next time someone says AI "runs on GPUs," you'll know what that means: millions of tiny sums, done all at once, by a crowd of simple workers. More explainers like this live in [Hardware](../topics/hardware/).
+We're explaining what's going on here, not telling anyone what to buy or when. If you want to go deeper, here's [how chips are made and why so few companies can do it](../what-does-3nm-mean/), and what Apple's [M6 MacBook Pro and iMac](../m6-macbook-pro-imac/) do with AI on the device itself. More explainers live in [Hardware](../topics/hardware/).

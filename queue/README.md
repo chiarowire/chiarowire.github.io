@@ -27,4 +27,4 @@ Dated:
 
 Slow-news days, top first:
 1. `where-are-cloud-photos-stored.md`: Ostro #4
-2. `why-are-gpus-used-for-ai.md`: Ostro #2 (recheck Nvidia's market cap and latest-quarter revenue first)
+2. `why-are-gpus-used-for-ai.md`: "Why AI Runs on Gaming Chips, and What It Means for You". Reworked 2026-11-06 for the Level rule. `kind: news`, no video embed. Keep this slug: live posts link to it. Do what its publish note says, including Nvidia's results due Nov 17.
