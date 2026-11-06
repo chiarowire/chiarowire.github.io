@@ -26,6 +26,5 @@ Dated:
 (none)
 
 Slow-news days, top first:
-1. `what-does-3nm-mean.md`: Ostro #3
-2. `where-are-cloud-photos-stored.md`: Ostro #4
-3. `why-are-gpus-used-for-ai.md`: Ostro #2 (recheck Nvidia's market cap and latest-quarter revenue first)
+1. `where-are-cloud-photos-stored.md`: Ostro #4
+2. `why-are-gpus-used-for-ai.md`: Ostro #2 (recheck Nvidia's market cap and latest-quarter revenue first)

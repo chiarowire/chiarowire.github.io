@@ -2,7 +2,7 @@
 title: "What Does 3nm Mean? Why Chip Sizes Aren't Real Sizes"
 description: "The 3nm on a chip isn't a measurement. It's a generation name. What a transistor is, what 3nm and 2nm really mean, and why chips are so hard to make."
 slug: what-does-3nm-mean
-pubDate: 2026-11-04
+pubDate: 2026-11-06
 cluster: hardware
 youtubeId: m4NvvlYUDnc
 videoTitle: "\"3nm\" Chips Aren't 3nm. So What's Really Inside?"
@@ -15,7 +15,7 @@ keywords:
   - 2nm vs 3nm
   - what is inside a computer chip
   - what is a transistor
-draft: true
+draft: false
 ---
 
 What does 3nm mean? Today, it's a generation name, not a measurement. "3 nanometers" tells you a chip comes from a newer, denser manufacturing process than "5nm". It doesn't tell you the size of anything on the chip. On TSMC's 3nm process, the gap from one transistor's gate to the next is about 45 nanometers.
