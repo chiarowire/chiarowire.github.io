@@ -48,7 +48,7 @@ export const SITE = {
   // empty, no tracking script is rendered. Fill it in only in the same push as the updated
   // Privacy Policy.
   analytics: {
-    goatcounterCode: '' as string,
+    goatcounterCode: 'chiarowire' as string,
   },
 
   postsPerPageHome: 6,
