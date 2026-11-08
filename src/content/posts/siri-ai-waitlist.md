@@ -57,7 +57,7 @@ It's also still a beta. Apple's own label says so, which means it can change, an
 
 Apple has already said one more change is coming. Its support page says "expanded access to such features will be available for a fee in the future." Apple hasn't announced a price, a date or what the paid tier would include, so for now the daily limits are the only limits.
 
-The waitlist itself hasn't been removed for good either. If demand spikes, Apple says you may still be put in a queue.
+The waitlist itself hasn't been removed for good either. If demand spikes, Apple says you may still be put in a queue. Siri AI is also the centerpiece of Apple's new smart display, [Apple HomeView](../apple-homeview/), which arrives November 13.
 
 ### Sources
 
