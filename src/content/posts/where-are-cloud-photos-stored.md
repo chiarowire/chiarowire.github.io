@@ -2,7 +2,7 @@
 title: "Where Are Cloud Photos Stored? (And Why It's Not a Backup)"
 description: "Cloud photos live on drives in data centers, copied across separate buildings. Why they almost never get lost, and why the cloud still isn't a backup."
 slug: where-are-cloud-photos-stored
-pubDate: 2026-11-04
+pubDate: 2026-11-09
 cluster: internet-and-you
 youtubeId: 2beptvuxrok
 videoTitle: "The Cloud Isn't a Backup. Here's Where Your Photos Live"
@@ -15,7 +15,7 @@ keywords:
   - is cloud storage a backup
   - what is the cloud
   - 3-2-1 backup rule
-draft: true
+draft: false
 ---
 
 Where are cloud photos stored? On storage drives inside data centers: huge buildings full of computers that tech companies run or rent. Big providers keep several copies of your data, spread across separate buildings, which is why a photo survives a lost phone. But the cloud syncs deletions too, so on its own it isn't a backup.
@@ -28,12 +28,7 @@ Let's follow one photo from your phone to the "cloud", see why it almost never g
 
 In 2011 the US standards agency NIST wrote down an official definition. In plain words: cloud computing means using a shared pool of computers, storage and software over a network, whenever you need it, without running any of it yourself ([NIST SP 800-145](https://csrc.nist.gov/pubs/sp/800/145/final)).
 
-So the cloud is really **other people's computers, rented out**. NIST lists what makes it "cloud" rather than just someone else's server. Two ideas matter most:
-
-- **Self-service:** you can grab more computing whenever you want, without calling anyone.
-- **Rapid elasticity:** it scales up fast when you need more and gives it back when you don't.
-
-Picture a concert-ticket website. On a normal Tuesday it needs a handful of servers. The minute a huge tour goes on sale, it might need hundreds. With the cloud, it rents them for the rush and hands them back that night.
+So the cloud is really **other people's computers, rented out**.
 
 ## Where are cloud photos physically stored?
 
@@ -49,9 +44,7 @@ Walk inside one and you'd see:
 | Batteries and generators | Batteries cover a power flicker instantly. Generators take over for longer outages. |
 | Cooling | Thousands of computers get hot, and most data centers use a mix of air and liquid cooling |
 
-Who owns all this? The names you'll hear most are Amazon Web Services, Microsoft Azure and Google Cloud. They rent out computing a bit like a power company sells electricity: you pay for what you use. Since 2017, Amazon has billed many of its rented servers by the second ([AWS](https://aws.amazon.com/blogs/aws/new-per-second-billing-for-ec2-instances-and-ebs-volumes/)).
-
-Netflix is a famous example. In 2008, a major database failure meant it couldn't ship DVDs to members for three days. That pushed it toward the cloud, and in early 2016 Netflix said it had finished moving its computing and storage there ([Netflix](https://about.netflix.com/en/news/completing-the-netflix-cloud-migration)).
+Who owns all this? The names you'll hear most are Amazon Web Services, Microsoft Azure and Google Cloud. They rent out computing a bit like a power company sells electricity: you pay for what you use.
 
 So whether you use iCloud, Google Photos or another service, the answer has the same shape: your photo sits on drives, in buildings full of servers, that you rent space in instead of owning.
 
@@ -69,8 +62,6 @@ Think of shipping furniture in numbered boxes. The boxes can ride different truc
 6. At the data center, the packets are put back in order and a server writes your photo onto storage drives.
 
 When you open the photo on your laptop, the whole trip runs in reverse. We follow that trip in much more detail in [how the internet works](../how-does-the-internet-work/).
-
-For things millions of people want at once, like a hit show, companies keep copies on servers closer to you, called a **content delivery network (CDN)**. Netflix runs its own, called Open Connect, with boxes placed inside internet providers' networks ([Netflix Open Connect](https://openconnect.netflix.com/en/)).
 
 ## Why do cloud photos almost never get lost?
 

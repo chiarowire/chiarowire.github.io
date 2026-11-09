@@ -156,6 +156,6 @@ But when a cable breaks, traffic usually gets rerouted over other cables while i
 5. **Light in glass** carries them, maybe under an ocean.
 6. The replies arrive, **TCP** snaps them back into order, and the page appears.
 
-So the internet isn't a cloud. It's roads, rules and light in glass, and it works because nobody has to know the whole route.
+So the internet isn't a cloud. It's roads, rules and light in glass, and it works because nobody has to know the whole route. Curious where your photos end up at the other end of that trip? See [where cloud photos are stored](../where-are-cloud-photos-stored/).
 
 What happens once the page reaches you is its own story: the feed you scroll is ranked by prediction, as we explain in [how the YouTube algorithm works](../how-does-the-youtube-algorithm-work/). And chatbots are prediction machines too: see [how ChatGPT works](../how-does-chatgpt-work/). More explainers like this are in [The Internet & You](../topics/internet-and-you/).
