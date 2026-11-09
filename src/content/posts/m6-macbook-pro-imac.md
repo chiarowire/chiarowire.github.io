@@ -4,8 +4,13 @@ description: "Apple's M6 reaches the 14-inch MacBook Pro ($1,999) and iMac ($1,4
 slug: m6-macbook-pro-imac
 kind: news
 pubDate: 2026-11-05
+updatedDate: 2026-11-09
 publishOn: 2026-11-05
 cluster: hardware
+youtubeId: to0BxjBtfJk
+videoTitle: "Apple's M6 Says \"30% Faster.\" Faster Than What?"
+videoUploadDate: 2026-11-06T19:13:55Z
+videoDuration: PT11M6S
 keywords:
   - m6 macbook pro
   - m6 macbook pro price
