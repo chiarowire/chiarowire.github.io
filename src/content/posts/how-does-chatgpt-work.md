@@ -32,7 +32,7 @@ Inside that umbrella sit three smaller circles, one inside the other:
 - **Deep learning.** Machine learning built on large, layered networks of simple math operations. They're loosely inspired by how neurons connect in the brain. Loosely: it's math, not a brain.
 - **Large language models (LLMs).** Deep learning models trained on an enormous amount of text so they can read and write language.
 
-ChatGPT, Claude and Gemini, the chatbots you've heard of, are all built on large language models. So when someone says "AI" today, they usually mean that small inner circle. The chatbot is just one very loud part of a much bigger field.
+ChatGPT, Claude and Gemini, the chatbots you've heard of, are all built on large language models. (For a recent example, see Anthropic's [Claude Fable 5.2](../claude-fable-5-2/) launch.) So when someone says "AI" today, they usually mean that small inner circle. The chatbot is just one very loud part of a much bigger field.
 
 ## What is a token in AI?
 
