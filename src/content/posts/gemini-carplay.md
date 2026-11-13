@@ -57,7 +57,7 @@ Google pitches the feature around driving. It describes Gemini as a "conversatio
 
 - **It matters most to commuters who already use Gemini**, especially people on Google's email and calendar apps. Hearing a summary of your morning without touching your phone is the clearest use.
 - **It matters less if you're happy with Siri**, or if you don't use Google's apps for email and calendar. Much of what Google shows off depends on those connections.
-- **The bigger trend:** AI chatbots are moving off the phone screen and into places where talking beats typing, like the car. Google putting its assistant on Apple's dashboard is one more step in that direction. For a sense of how fast these AI tools are changing, see our post on Anthropic's [Claude Fable 5.2](../claude-fable-5-2/).
+- **The bigger trend:** AI chatbots are moving off the phone screen and into places where talking beats typing, like the car. Google putting its assistant on Apple's dashboard is one more step in that direction. Google is also taking Gemini off the screen entirely, with [Gemini smart glasses](../google-gemini-smart-glasses/) built with Samsung. For a sense of how fast these AI tools are changing, see our post on Anthropic's [Claude Fable 5.2](../claude-fable-5-2/).
 
 ## What's next
 
