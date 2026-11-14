@@ -3,7 +3,7 @@ title: "Why AI Runs on Gaming Chips, and What It Means for You"
 description: "AI runs on chips built for video games. Here's why, in plain English, and how that demand is reaching the prices of phones, PCs and consoles."
 slug: why-are-gpus-used-for-ai
 kind: news
-pubDate: 2026-11-04
+pubDate: 2026-11-14
 cluster: hardware
 keywords:
   - why does ai run on gaming chips
@@ -12,10 +12,8 @@ keywords:
   - why are graphics cards so expensive
   - why are phones more expensive
   - how does ai affect prices
-draft: true
+draft: false
 ---
-
-<!-- Publish note: recheck the dated figures first. RTX 5070 prices (checked Nov 2-3, 2026), IDC's phone and PC figures (latest checked Oct 14, 2026), the Switch 2 US price. If Nvidia has reported the quarter that ended Oct 25, 2026 (results due Nov 17, 2026), replace the July quarter's Data Center and Edge Computing figures with the new ones from its press release, using the same two labels. Cut anything you can't confirm. Keep it free of advice, stock talk and market value. Delete this note once done. -->
 
 Why does AI run on gaming chips? Because AI, like a video game, comes down to a huge pile of simple math done all at once, and graphics chips were built for exactly that. The part that reaches you: demand for those chips and their memory now shows up in the price of phones, PCs and consoles.
 
