@@ -30,6 +30,8 @@ In 2011 the US standards agency NIST wrote down an official definition. In plain
 
 So the cloud is really **other people's computers, rented out**.
 
+When those computers have a bad day, millions of people notice at once, as the [November 2026 Microsoft 365 outage](../microsoft-365-outage/) showed.
+
 ## Where are cloud photos physically stored?
 
 In **data centers**. IBM describes a data center as a room, a building or a whole facility that houses computing equipment ([IBM](https://www.ibm.com/think/topics/data-centers)). The big ones look like enormous warehouses.
