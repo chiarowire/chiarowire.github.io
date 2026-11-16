@@ -55,7 +55,7 @@ If you're on the free plan, Anthropic hasn't listed Fable 5.2 for you.
 
 - **If you write code, do research or run long, complicated projects with Claude**, this is the update aimed squarely at you, and the speed and price changes are real, announced numbers.
 - **If you use a chatbot for emails, questions and summaries**, Anthropic's own advice is that you probably don't need Fable for that. The model you already use isn't going away. A day later, Anthropic also added [Claude Sheets and Whiteboards](../claude-sheets-whiteboards/), which are more relevant to everyday work.
-- **If you don't use Claude at all**, the bigger picture is the trend. AI companies are splitting their products into an everyday model and a heavyweight one with tighter limits, the same way phones come in standard and "Pro" versions. All of it runs on huge server farms full of specialized chips, which is why [chip progress](../what-does-3nm-mean/) keeps coming up in AI news.
+- **If you don't use Claude at all**, the bigger picture is the trend. AI companies are splitting their products into an everyday model and a heavyweight one with tighter limits, the same way phones come in standard and "Pro" versions. All of it runs on huge server farms full of specialized chips, which is why [chip progress](../what-does-3nm-mean/) keeps coming up in AI news. Assistants are also learning to take actions for you, like OpenAI's [ChatGPT Wallet](../chatgpt-wallet/), which lets its agents make purchases you approve.
 
 One thing to keep in mind: the impressive claims, from physics problems to benchmark scores, come from Anthropic. Independent testing usually follows in the weeks after a launch.
 
