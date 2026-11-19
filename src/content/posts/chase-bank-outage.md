@@ -52,7 +52,7 @@ Why did other banks show up in the reports? Chase said other banks "may have bee
 
 Our take: yes, mostly as a reminder of how connected everyday money apps are.
 
-Paying a friend or getting your paycheck feels like one tap. Behind it, at least two banks' systems, plus services like Zelle that link them, all have to work at the same moment. That design is usually fast and reliable. But when one large piece slows down, people at several banks can feel it. Our guide to [how the internet works](../how-does-the-internet-work/) explains why networks can route around trouble, while a single company's own systems can still stall.
+Paying a friend or getting your paycheck feels like one tap. Behind it, at least two banks' systems, plus services like Zelle that link them, all have to work at the same moment. That design is usually fast and reliable. But when one large piece slows down, people at several banks can feel it. Our guide to [how the internet works](../how-does-the-internet-work/) explains why networks can route around trouble, while a single company's own systems can still stall. For the bigger picture, see [why apps go down](../why-do-apps-go-down/).
 
 It was also a rough week for big tech systems. Engadget points out that several Microsoft services went down on November 12 (we covered the [Microsoft 365 outage](../microsoft-365-outage/)), and that air traffic control equipment problems led to a nationwide ground stop the next day. The companies involved have described these as separate problems.
 
