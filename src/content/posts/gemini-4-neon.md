@@ -52,7 +52,7 @@ Google backs that up with its own test scores, including a 99.2% pass rate on wh
 
 - **If you pay for Google AI Pro or Ultra,** this is a new option in your model menu, aimed at bigger jobs like summarizing long documents or working through a pile of receipts. It's worth knowing it's there.
 - **If you use free Gemini,** nothing in Google's announcement changes for you today.
-- **If you don't use Gemini at all,** the bigger picture is that AI companies keep adding middle-tier models that aim for "almost the best, for less." That's how better AI tends to reach more people over time. Gemini itself keeps spreading too, from [your car](../gemini-carplay/) to [smart glasses](../google-gemini-smart-glasses/).
+- **If you don't use Gemini at all,** the bigger picture is that AI companies keep adding middle-tier models that aim for "almost the best, for less." That's how better AI tends to reach more people over time. Gemini itself keeps spreading too, from [your car](../gemini-carplay/) to [smart glasses](../google-gemini-smart-glasses/) to [using apps on your Mac](../gemini-mac-computer-use/).
 
 One more thing, if you're about to hand Gemini your bills or email to sort through: Google recently changed [how Gemini saves your chat history and uses it for AI training](../gemini-chat-history-ai-training/). It's worth a look at those settings first.
 
