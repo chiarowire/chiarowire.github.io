@@ -64,7 +64,7 @@ Since the same M6 chip has been in the Mac mini since August, reviewers have alr
 
 ### What "2 nanometers" means
 
-"2nm" sounds like a measurement. It isn't. Chip-process names stopped matching any real size on the chip decades ago, and they now work more like model years. We break that down in [what 3nm (and 2nm) really means](../what-does-3nm-mean/). A newer generation usually packs transistors more densely, and here Apple used that to add cores and stretch battery life.
+"2nm" sounds like a measurement. It isn't. Chip-process names stopped matching any real size on the chip decades ago, and they now work more like model years. We break that down in [what 3nm (and 2nm) really means](../what-does-3nm-mean/). A newer generation usually packs transistors more densely, and here Apple used that to add cores and stretch battery life. Every battery still loses some capacity with age, which we explain in [why phone batteries wear out](../why-do-phone-batteries-wear-out/).
 
 ### Who it's for
 
