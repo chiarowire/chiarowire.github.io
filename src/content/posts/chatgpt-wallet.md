@@ -50,7 +50,7 @@ It also won't work everywhere. Some stores block AI agents from their sites. CNB
 
 Our take: yes, as a sign of where AI assistants are heading, even if you never use this version.
 
-For a few years, chatbots have mostly talked. (Our explainer on [how ChatGPT works](../how-does-chatgpt-work/) covers the "predict the next word" trick behind that.) The next step the big AI companies are working toward is assistants that *do* things: book, order, pay. Paying is the hardest part to get right, because mistakes cost real money. That's why the launch keeps a person in the loop for every purchase.
+For a few years, chatbots have mostly talked. (Our explainer on [how ChatGPT works](../how-does-chatgpt-work/) covers the "predict the next word" trick behind that.) The next step the big AI companies are working toward is assistants that *do* things: book, order, pay. Paying is the hardest part to get right, because mistakes cost real money. That's why the launch keeps a person in the loop for every purchase. (OpenAI's newest ChatGPT models, [GPT-6.2 Astra and Sol](../gpt-6-2-astra-sol/), followed a few days later.)
 
 OpenAI isn't alone in pushing assistants into everyday tasks. Apple has been widening access to its [new Siri AI](../siri-ai-waitlist/), and Google has been putting Gemini into [cars](../gemini-carplay/) and [glasses](../google-gemini-smart-glasses/). ChatGPT Wallet is one of the first big launches that lets an assistant actually check out. (Google has since let Gemini [work in your Mac apps for you](../gemini-mac-computer-use/), too.)
 
