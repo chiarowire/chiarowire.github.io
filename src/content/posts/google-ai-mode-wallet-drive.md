@@ -50,7 +50,7 @@ That's different from [ChatGPT Wallet](../chatgpt-wallet/), which OpenAI built s
 
 - **It matters most to people who already use AI Mode and keep a lot in Google's apps.** If your receipts, cards and documents are in Google, AI Mode answers could get noticeably more specific to you, if you choose to connect them.
 - **It matters to privacy-minded people too,** because money and documents are more sensitive than search history. The good news is that it's off unless you turn it on, and Google says the coming Personalization icon will show what info an answer used.
-- **The bigger picture:** assistants keep reaching further into your stuff. Gemini can already [work inside apps on a Mac](../gemini-mac-computer-use/), and Google keeps shipping new models like [Gemini 4 Neon](../gemini-4-neon/). Understanding [how these chatbots work](../how-does-chatgpt-work/) helps explain why: the more context they get, the better their guesses about what you mean.
+- **The bigger picture:** assistants keep reaching further into your stuff. Gemini can already [work inside apps on a Mac](../gemini-mac-computer-use/), Meta's Muse agent now [lives in Instagram DMs](../meta-muse-instagram-dms/), and Google keeps shipping new models like [Gemini 4 Neon](../gemini-4-neon/). Understanding [how these chatbots work](../how-does-chatgpt-work/) helps explain why: the more context they get, the better their guesses about what you mean.
 
 Like any AI tool, AI Mode can make mistakes, so it's worth double-checking anything about your money or documents against the original source.
 
