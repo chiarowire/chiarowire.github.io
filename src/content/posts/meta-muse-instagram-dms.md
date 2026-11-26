@@ -36,7 +36,7 @@ TechCrunch lists examples like turning a recipe video into a grocery list, turni
 - **Meta says nothing happens without your OK.** Per TechCrunch, Meta says "Nothing is shared, published, or sent without their approval," and that you can ask Muse to forget information or undo actions at any time.
 - **It's a lighter version.** Engadget says Muse inside Instagram is more limited than the Muse app or website, and you'd likely still need those to see everything Muse does with your Instagram messages.
 - **Meta AI isn't going away.** Instagram already has a separate Meta AI chatbot in DMs. An Instagram spokesperson told Engadget it's staying. Meta AI is meant for general questions, while Muse is meant to act more like an assistant. So you may see both.
-- **Rollout takes time.** Meta said it begins rolling out on November 24, so it may not be on your phone yet even if you're in one of those countries.
+- **Rollout takes time.** Meta said it begins rolling out on November 24, so it may not be on your phone yet even if you're in one of those countries. WhatsApp's new [scheduled messages](../whatsapp-scheduled-messages/) are arriving the same gradual way.
 
 ## Is it worth caring about?
 
