@@ -33,7 +33,7 @@ This is the part that trips people up, so here it is plainly:
 
 - **Who gets them:** OpenAI says the models are available to "all Plus, Pro, Enterprise, and Edu users." Free users aren't mentioned in either OpenAI page we read.
 - **Where:** in **ChatGPT Work** (you pick a model from the Work model picker) and in **Codex**, OpenAI's coding tool. The release notes call them a "preview" there.
-- **The regular chat isn't changing yet:** OpenAI's release notes say the normal Chat tab "keeps its existing model choices." So if you only use ChatGPT for quick back-and-forth questions, you may not see GPT-6.2 at all for now.
+- **The regular chat isn't changing yet:** OpenAI's release notes say the normal Chat tab "keeps its existing model choices." So if you only use ChatGPT for quick back-and-forth questions, you may not see GPT-6.2 at all for now. (Update: OpenAI is now [merging the Chat and Work tabs](../chatgpt-chat-work-merge/) into one.)
 - **Faster replies for some plans:** OpenAI also mentions a speed option called Ultrafast for some Pro subscribers, with Enterprise and Edu workspaces able to turn it on. OpenAI's post doesn't explain it in detail.
 
 ## What GPT-6.2 means for you
