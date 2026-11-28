@@ -108,7 +108,7 @@ That has been the design since ARPANET, one of the first networks built this way
 
 ## How does the internet work physically?
 
-Wi-Fi is radio, but it usually covers only the first stretch, from your phone to your router. After that your packets mostly ride through cables.
+Wi-Fi is radio, but it usually covers only the first stretch, from your phone to your router (here's [how Wi-Fi works](../how-does-wi-fi-work/)). After that your packets mostly ride through cables.
 
 The long-distance cables are made of glass: **fiber optic cable**. Your data becomes flashes of light racing down a strand of glass about as thin as a human hair. Light in glass travels at about two-thirds of its speed in empty space, which is still around **200,000 kilometers per second**.
 

@@ -48,7 +48,7 @@ Inside M6, according to Apple:
 
 *Sources: Apple's press releases and spec pages for the [MacBook Pro](https://www.apple.com/macbook-pro/specs/) and [iMac](https://www.apple.com/imac/specs/).*
 
-The MacBook Pro's design, display and ports carry over from the M5 model. The main upgrades are the chip, faster wireless (Wi-Fi 7 and Bluetooth 6), and what Apple calls the longest battery life ever in a Mac. The iMac also keeps its design. Its 12-core models add 2.5-gigabit Ethernet, and it goes straight from M4 to M6, skipping M5 entirely ([TidBITS](https://tidbits.com/2026/10/27/m6-comes-to-the-14-inch-macbook-pro-and-imac/)).
+The MacBook Pro's design, display and ports carry over from the M5 model. The main upgrades are the chip, faster wireless ([Wi-Fi 7](../how-does-wi-fi-work/) and Bluetooth 6), and what Apple calls the longest battery life ever in a Mac. The iMac also keeps its design. Its 12-core models add 2.5-gigabit Ethernet, and it goes straight from M4 to M6, skipping M5 entirely ([TidBITS](https://tidbits.com/2026/10/27/m6-comes-to-the-14-inch-macbook-pro-and-imac/)).
 
 ## Why it matters
 
